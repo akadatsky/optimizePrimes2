@@ -2,8 +2,11 @@ package com.company;
 
 public class Main {
 
-    public static final int MAX_COUNT = 100_000;
+    public static final int MAX_COUNT = 200_000;
     // 100_000 => 9.21 s
+    // 100_000 => 0.914 s (after brake)
+    // 200_000 => 3.231
+    // 200_000 => 3.158 s (after return)
 
     public static void main(String[] args) {
         //checkIsPrime();
@@ -27,13 +30,12 @@ public class Main {
     }
 
     public static boolean isPrime(int value) {
-        boolean result = true;
         for (int i = 2; i < value - 1; i++) {
             if (value % i == 0) {
-                result = false;
+                return false;
             }
         }
-        return result;
+        return true;
     }
 
     private static void checkIsPrime() {
