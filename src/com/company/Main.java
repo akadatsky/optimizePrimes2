@@ -7,10 +7,15 @@ public class Main {
     // 100_000 => 0.914 s (after brake)
     // 200_000 => 3.231
     // 200_000 => 3.158 s (after return)
+    // 200_000 => 1.636 s (after extract 2)
+    // 200_000 => 0.016 s
 
     public static void main(String[] args) {
-        //checkIsPrime();
+//        checkIsPrime();
+        measureTime();
+    }
 
+    private static void measureTime() {
         int count = 0;
 
         long time = System.currentTimeMillis();
@@ -26,11 +31,16 @@ public class Main {
 
         //System.out.println("Count: " + count);
         System.out.println("Time: " + time / 1000.0 + " s");
-
     }
 
     public static boolean isPrime(int value) {
-        for (int i = 2; i < value - 1; i++) {
+        if (value == 2) {
+            return true;
+        }
+        if (value % 2 == 0) {
+            return false;
+        }
+        for (int i = 3; i * i <= value; i += 2) {
             if (value % i == 0) {
                 return false;
             }
